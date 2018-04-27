@@ -212,7 +212,8 @@ NSString *const kTSOutgoingMessageSentRecipientAll = @"kTSOutgoingMessageSentRec
                                                        expireStartedAt:0
                                                         isVoiceMessage:NO
                                                       groupMetaMessage:TSGroupMessageUnspecified
-                                                         quotedMessage:quotedMessage];
+                                                         quotedMessage:quotedMessage
+                                                          contactShare:nil];
 }
 
 + (instancetype)outgoingMessageInThread:(nullable TSThread *)thread
@@ -226,7 +227,8 @@ NSString *const kTSOutgoingMessageSentRecipientAll = @"kTSOutgoingMessageSentRec
                                                        expireStartedAt:0
                                                         isVoiceMessage:NO
                                                       groupMetaMessage:groupMetaMessage
-                                                         quotedMessage:nil];
+                                                         quotedMessage:nil
+                                                          contactShare:nil];
 }
 
 - (instancetype)initOutgoingMessageWithTimestamp:(uint64_t)timestamp
@@ -238,6 +240,7 @@ NSString *const kTSOutgoingMessageSentRecipientAll = @"kTSOutgoingMessageSentRec
                                   isVoiceMessage:(BOOL)isVoiceMessage
                                 groupMetaMessage:(TSGroupMetaMessage)groupMetaMessage
                                    quotedMessage:(nullable TSQuotedMessage *)quotedMessage
+                                    contactShare:(nullable OWSContactShare *)contactShare
 {
     self = [super initMessageWithTimestamp:timestamp
                                   inThread:thread
@@ -245,7 +248,8 @@ NSString *const kTSOutgoingMessageSentRecipientAll = @"kTSOutgoingMessageSentRec
                              attachmentIds:attachmentIds
                           expiresInSeconds:expiresInSeconds
                            expireStartedAt:expireStartedAt
-                             quotedMessage:quotedMessage];
+                             quotedMessage:quotedMessage
+                              contactShare:contactShare];
     if (!self) {
         return self;
     }
